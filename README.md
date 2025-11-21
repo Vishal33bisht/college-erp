@@ -1,7 +1,7 @@
 # College Management System
 
 A full-stack College Management System built with React, Tailwind CSS, FastAPI, and PostgreSQL/MySQL.  
-The system supports multiple roles (Admin, HOD, Teacher, Teaching Assistant, Student) and covers core academic workflows such as course management, assignments, grades, attendance, and resource booking.
+The system supports multiple roles (Admin, HOD, Teacher, Teaching Assistant, Student) and covers core academic workflows such as course management, assignments, grades, 
 
 ---
 
@@ -22,14 +22,12 @@ The system supports multiple roles (Admin, HOD, Teacher, Teaching Assistant, Stu
 **Database**
 - PostgreSQL or MySQL
 
-**Others**
-- Docker / Docker Compose (optional)
-- Alembic (or similar) for migrations
+
 - Git & GitHub for version control and collaboration
 
 ---
 
-## 🎯 Key Features (Planned)
+## 🎯 Key Features 
 
 ### Student
 
@@ -46,12 +44,6 @@ The system supports multiple roles (Admin, HOD, Teacher, Teaching Assistant, Stu
   - Filter by status (pending, submitted, graded)
   - Submit assignments and upload files
   - View grades and feedback
-- Attendance & grades:
-  - View attendance by course
-  - See grade breakdown and reports
-- Resource booking:
-  - View and book labs/rooms/equipment
-  - Check availability and booking history
 
 ### Teacher
 
@@ -144,11 +136,10 @@ High level architecture:
   - Core tables: `users`, `departments`, `courses`, `enrollments`, `assignments`, `grades`, `attendance`, `resources`, `bookings`  
   - Managed via migrations
 
-A detailed architecture and ER diagram will be available in `docs/architecture.md` (planned).
 
 ---
 
-## 📂 Project Structure (Planned)
+## 📂 Project Structure 
 
 ```text
 college-management-system/
@@ -181,3 +172,50 @@ college-management-system/
   .gitignore
   README.md
   LICENSE
+
+
+- RBAC implemented using JSON Web Tokens and backend permission checks
+- Alembic used for schema migrations
+- Modular backend structure (API routes / schemas / services / models)
+
+---
+
+## 📂 Repository Structure
+
+
+
+Backend and frontend run independently to allow scalable deployment.
+
+---
+
+## ⚙️ Getting Started
+
+### Prerequisites
+- Node.js (LTS)
+- Python 3.10+
+- PostgreSQL
+- Git
+
+### 1️⃣ Clone the Repository
+```bash
+git clone https://github.com/Vishal33bisht/college-erp.git
+cd college-erp
+
+
+cd backend
+python -m venv venv
+source venv/bin/activate   # Windows: venv\Scripts\activate
+pip install -r requirements.txt
+
+# Configure environment variables
+cp .env.example .env       # Edit DB_URL and JWT_SECRET here
+
+# Apply migrations
+alembic upgrade head
+
+# Start backend
+uvicorn main:app --reload
+
+cd ../frontend
+npm install
+npm run dev
